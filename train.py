@@ -117,7 +117,7 @@ class PhysicoChemicalVectorFusion(nn.Module):
     def __init__(self, d_model=128, device=None):
         super().__init__()
         self.vec_dims = [1, 1, 1, 3, 1, 273]
-        self.projection = []
+        self.projection = nn.ModuleList()
         for dim in self.vec_dims:
             self.projection.append(nn.Linear(dim, d_model, device=device))
         self.norm = nn.LayerNorm(d_model)
